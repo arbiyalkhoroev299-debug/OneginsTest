@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест по сюжету романа А. С. Пушкина «Евгений Онегин»</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f4efe6;
+            --text-color: #2b231d;
+            --accent-color: #5c1822;
+            --border-color: #c0b09d;
+            --card-bg: #ffffff;
+            --subtle-bg: #eae3d5;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.5;
+            padding: 30px 40px;
+        }
+
+        /* Адаптация под широкие экраны ноутбуков и ПК */
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 45px 50px;
+            border: 2px solid var(--border-color);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.07);
+            position: relative;
+        }
+
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            right: 6px;
+            bottom: 6px;
+            border: 1px solid var(--border-color);
+            pointer-events: none;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 35px;
+            border-bottom: 2px double var(--border-color);
+            padding-bottom: 25px;
+        }
+
+        .header-icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 12px;
+            fill: var(--accent-color);
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            color: var(--accent-color);
+            margin-bottom: 6px;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-size: 20px;
+            font-style: italic;
+            color: #554538;
+            margin-bottom: 12px;
+        }
+
+        .meta-info {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #8c735c;
+            font-weight: 600;
+        }
+
+        .test-instructions {
+            background-color: var(--subtle-bg);
+            border-left: 4px solid var(--accent-color);
+            padding: 14px 20px;
+            margin-bottom: 30px;
+            font-size: 18px;
+            font-style: italic;
+        }
+
+        /* Двухколоночная сетка вопросов для экрана ноутбука */
+        .questions-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px 24px;
+        }
+
+        @media (max-width: 900px) {
+            .questions-grid {
+                grid-template-columns: 1fr;
+            }
+            body {
+                padding: 15px;
+            }
+            .container {
+                padding: 25px 20px;
+            }
+        }
+
+        .question-card {
+            background: #fdfbf7;
+            border: 1px solid #dfd5c6;
+            padding: 18px 22px;
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .question-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 12px;
+            line-height: 1.35;
+        }
+
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .option-item {
+            font-size: 17px;
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            line-height: 1.3;
+        }
+
+        .option-letter {
+            font-weight: bold;
+            color: var(--accent-color);
+            min-width: 20px;
+        }
+
+        /* Ответы внизу страницы */
+        .answers-section {
+            margin-top: 50px;
+            padding-top: 25px;
+            border-top: 2px double var(--border-color);
+        }
+
+        .answers-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            color: var(--accent-color);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .answers-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            font-size: 16px;
+        }
+
+        @media (max-width: 900px) {
+            .answers-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .answers-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .answer-box {
+            background: var(--subtle-bg);
+            padding: 6px 10px;
+            border: 1px solid #d4c7b5;
+            text-align: center;
+            border-radius: 3px;
+        }
+
+        .answer-box span {
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        @media print {
+            body {
+                background-color: #fff;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                border: none;
+                padding: 0;
+                max-width: 100%;
+            }
+            .container::before {
+                display: none;
+            }
+            .question-card {
+                border: 1px solid #ccc;
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <svg class="header-icon" viewBox="0 0 24 24">
+                <path d="M12 19l7-7 3 3-7 7-3-3z"/>
+                <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
+                <path d="M2 2l7.5 8.5"/>
+            </svg>
+            <h1>А. С. Пушкин — «Евгений Онегин»</h1>
+            <div class="subtitle">Тест на знание сюжета и событий романа</div>
+            <div class="meta-info">35 вопросов по сюжету • Варианты ответов • Ключ в конце</div>
+        </header>
+
+        <div class="test-instructions">
+            <strong>Инструкция:</strong> Все вопросы касаются исключительно сюжетных событий, поступков и судеб героев романа. Выберите один верный вариант ответа для каждого вопроса.
+        </div>
+
+        <div class="questions-grid">
+
+            <!-- Вопрос 1 -->
+            <div class="question-card">
+                <div class="question-title">1. С какой целью Евгений Онегин отправляется в деревню в первой главе?</div>
+                <div class="options-list">
+                    <div class="option-item"><span class="option-letter">А)</span> Скрывался от карточных долгов и дуэли</div>
+                    <div class="option-item"><span class="option-letter">Б)</span> К тяжелобольному дяде за наследством</div>
+                    <div class="option-item"><span class="option-letter">В)</span> По служебному предписанию из Петербурга</div>
+                    <div class="option-item"><span class="option-letter">Г)</span> На летнюю охоту по приглашению друзей</div>
+                </div>
+            </div>
+
+            <!-- Вопрос 2 -->
+            <div class="question-card">
+                <div class="question-title">2. Из какой страны в свое деревенское имение возвращается Владимир Ленский?</div>
+                <div class="options-list">
+                    <div class="option-item"><span class="option-letter">А)</span> Из Англии</div>
+                    <div class="option-item"><span class="option-letter">Б)</span> Из Франции</div>
+                    <div class="option-item"><span class="option-letter">В)</span> Из Германии (из Геттингена)</div>
+                    <div class="option-item"><span class="option-letter">Г)</span> Из Италии</div>
+                </div>
+            </div>
+
+            <!-- Вопрос 3 -->
+            <div class="question-card">
+                <div class="question-title">3. В кого из сестер Лариных был с детских лет страстно влюблен Ленский?</div>
+                <div class="options-list">
+                    <div class="option-item"><span class="option-letter">А)</span> В Татьяну Ларину</div>
+                    <div class="option-item"><span class="option-letter">Б)</span> В Ольгу Ларину</div>
+                    <div class="option-item"><span class="option-letter">В)</span> В кузину Алину</div>
+                    <div class="option-item"><span class="option-letter">Г)</span> В воспитанницу Дуню</div>
+                </div>
+            </div>
+
+            <!-- Вопрос 4 -->
+            <div class="question-card">
+                <div class="question-title">4. Какая из сестер Лариных описана как дикая, печальная, молчаливая и дичилась людей?</div>
+                <div class="options-list">
+                    <div class="option-item"><span class="option-letter">А)</span> Ольга</div>
+                    <div class="option-item"><span class="option-letter">Б)</span> Мать Прасковья</div>
+                    <div class="option-item"><span class="option-letter">В)</span> Татьяна</div>
+                    <div class="option-item"><span class="option-letter">Г)</span> Кузина Полина</div>
+                </div>
+            </div>
+
+            <!-- Вопрос 5 -->
+            <div class="question-card">
+                <div class="question-title">5. Кто впервые приводит Онегина в дом семьи Лариных?</div>
+                <div class="options-list">
+                    <div class="option-item"><span class="option-letter">А)</span> Помещик Зарецкий</div>
+                    <div class="option-item"><span class="option-letter">Б)</span> Владимир Ленский</div>
+                    <div class="option-item"><span class="option-letter">В)</span> Старый слуга дяди</div>
+                    <div class="option-item"><span class="option-letter">Г)</span> Отец Татьяны и Ольги</div>
+                </div>
+            </div>
+
+            <!-- Вопрос 6 -->
+            <div class="question-card">
+                <div class="question-title">6. Что происходит с Татьяной после первого же визита Онегина в их дом?</div>
+                <div class="options-list">
+                    <div class="option-item"><span class="option-letter">А)</span> Она сразу невзлюбила его за гордость</div>
+                    <div class="option-item"><span class="option-letter">Б)</span> Она начала избегать встреч с ним</div>
+                    <div class="option-item"><span class="option-letter">В)</span> Она страстно и безоглядно влюбилась в него</div>
+                    <div class="option-item"><span class="option-letter">Г)</span> Она вступила с ним в спор о книгах</div>
+                </div>
+            </div>
+
+            <!-- Вопрос 7 -->
+            <div class="question-card">
+                <div class="question-title">7. На каком языке Татьяна написала свое знаменитое письмо с признанием к Онегину?</div>
+                <div class="options-list">
+                    <div class="option-item"><span class="option-letter">А)</span> На русском</div>
+                    <div class="option-item"><span class="option-letter">Б)</span> На французском</div>
+                    <div class="option-item"><span class="option-letter">В)</span> На немецком</div>
+                    <div class="option-item"><span class="option-letter">Г)</span> На итальянском</div>
+                </div>
+            </div>
+
+            <!-- Вопрос 8 -->
+            <div class="question-card">
+                <div class="question-title">8. Кого Татьяна просит тайно передать ее письмо Онегину?</div>
+                <div class="options-list">
+                    <div class="option-item"><span class="option-letter">А)</span> Своего дворового слугу</div>
+                    <div class="option-item"><span class="option-letter">Б)</span> Дочь кухарки</div>
+                    <div class="option-item"><span class="option-letter">В)</span> Внука своей няни Филиппьевны</div>
+                    <div class="option-item"><span class="option-letter">Г)</span> Деревенского пастуха</div>
+                </div>
+            </div>
+
+            <!-- Вопрос 9 -->
+            <div class="question-card">
+                <div class="question-title">9. Где происходит личное объяснение Онегина с Татьяной после её письма?</div>
+                <div class="options-list">
+                    <div class="option-item"><span class="option-letter">А)</span> В гостиной дома Лариных</div>
+                    <div class="option-item"><span class="option-letter">Б)</span> В саду поместья Лариных</div>
+                    <div class="option-item"><span class="option-letter">В)</span> На мостике через речку</div>
+                    <div class="option-item"><span class="option-letter">Г)</span> В церкви после службы</div>
+                </div>
+            </div>
+
+            <!-- Вопрос 10 -->
+            <div class="question-card">
+                <div class="question-title">10. Каков был ответ Онегина на искреннее признание Татьяны?</div>
+                <div class="options-list">
+                    <div class="option-item"><span class="option-letter">А)</span> Сразу же предложил ей руку и сердце</div>
+                    <div class="option-item"><span class="option-letter">Б)</span> Засмеялся и молча уехал</div>
+                    <div class="option-item"><span class="option-letter">В)</span> Признался, что тронут, но к браку не готов</div>
+                    <div class="option-item"><span class="option-letter">Г)</span> Жестко высмеял её перед сестрой</div>
+                </div>
+            </div>
+
+            <!-- Вопрос 11 -->
+            <div class="question-card">
+                <div class="question-title">11. Какое животное в пророческом сне Татьяны помогает ей перейти заснеженный поток?</div>
+                <div class="options-list">
+                    <div class="option-item"><span class="option-letter">А)</span> Огромный волк</div>
+                    <div class="option-item"><span class="option-letter">Б)</span> Большой ерошистый медведь</div>
+                    <div class="option-item"><span class="option-letter">В)</span> Белый конь</div>
+                    <div class="option-item"><span class="option-letter">Г)</span> Лесной олень</div>
+                </div>
+            </div>
+
+            <!-- Вопрос 12 -->
+            <div class="question-card">
+                <div class="question-title">12. Кого Татьяна видит во главе чудовищ в лесной избушке в своем сне?</div>
+                <div class="options-list">
+                    <div class="option-item"><span class="option-letter">А)</span> Владимира Ленского</div>
+                    <div class="option-item"><span class="option-letter">Б)</span> Помещика Зарецкого</div>
+                    <div class="option-item"><span class="option-letter">В)</span> Евгения Онегина</div>
+                    <div class="option-item"><span class="option-letter">Г)</span> Своего умершего отца</div>
+                </div>
+            </div>
+
+            <!-- Вопрос 13 -->
+            <div class="question-card">
+                <div class="question-title">13. Какая страшная развязка происходит во сне Татьяны между Онегиным и Ленским?</div>
+                <div class="options-list">
+                    <div class="option-item"><span class="option-letter">А)</span> Ленский стреляет в Онегина</div>
+                    <div class="option-item"><span class="option-letter">Б)</span> Онегин убивает Ленского длинным ножом</div>
+                    <div class="option-item"><span class="option-letter">В)</span> Они вместе пьют и спорят</div>
+                    <div class="option-item"><span class="option-letter">Г)</span> Онегин объявляет о свадьбе с Ольгой</div>
+                </div>
+            </div>
+
+            <!-- Вопрос 14 -->
+            <div class="question-card">
+                <div class="question-title">14. В честь какого события в доме Лариных собирается множество гостей в 5-й главе?</div>
+                <div class="options-list">
+                    <div class="option-item"><span class="option-letter">А)</span> Свадьба Ольги и Ленского</div>
+                    <div class="option-item"><span class="option-letter">Б)</span> Празднование Рождества</div>
+                    <div class="option-item"><span class="option-letter">В)</span> Именины Татьяны</div>
+                    <div class="option-item"><span class="option-letter">Г)</span> Приезд генерала из Петербурга</div>
+                </div>
+            </div>
+
+            <!-- Вопрос 15 -->
+            <div class="question-card">
+                <div class="question-title">15. Почему Онегин разозлился на Ленского во время праздника у Лариных?</div>
+                <div class="options-list">
+                    <div class="option-item"><span class="option-letter">А)</span> Раздосадовался, что Ленский привел его на шумный сброд гостей</div>
+                    <div class="option-item"><span class="option-letter">Б)</span> Из-за старого невыплаченного денежного долга</div>
+                    <div class="option-item"><span class="option-letter">В)</span> Из-за спора о французской поэзии</div>
+                    <div class="option-item"><span class="option-letter">Г)</span> Ленский случайно пролил на него вино</div>
+                </div>
+            </div>
+
+            <!-- Вопрос 16 -->
+            <div class="question-card">
+                <div class="question-title">16. Что именно сделал Онегин на именинах Татьяны, чтобы отомстить Ленскому?</div>
+                <div class="options-list">
+                    <div class="option-item"><span class="option-letter">А)</span> Публично назвал Ленского плохим поэтом</div>
+                    <div class="option-item"><span class="option-letter">Б)</span> Разорвал и сжег рукопись Ленского</div>
+                    <div class="option-item"><span class="option-letter">В)</span> Нарочито весь вечер танцевал и кокетничал с Ольгой</div>
+                    <div class="option-item"><span class="option-letter">Г)</span> Демонстративно уехал, не попрощавшись</div>
+                </div>
+            </div>
+
+            <!-- Вопрос 17 -->
+            <div class="question-card">
+                <div class="question-title">17. Кто передает Онегину письменный вызов на дуэль от Ленского?</div>
+                <div class="options-list">
+                    <div class="option-item"><span class="option-letter">А)</span> Слуга француза Гильо</div>
+                    <div class="option-item"><span class="option-letter">Б)</span> Помещик Зарецкий</div>
+                    <div class="option-item"><span class="option-letter">В)</span> Лично Ленский при встрече</div>
+                    <div class="option-item"><span class="option-letter">Г)</span> Деревенский мельник</div>
+                </div>
+            </div>
+
+            <!-- Вопрос 18 -->
+            <div class="question-card">
+                <div class="question-title">18. Кого Онегин берет себе в секунданты на дуэль вопреки дуэльным правилам?</div>
+                <div class="options-list">
+                    <div class="option-item"><span class="option-letter">А)</span> Помещика Зарецкого</div>
+                    <div class="option-item"><span class="option-letter">Б)</span> Отставного гусарского офицера</div>
+                    <div class="option-item"><span class="option-letter">В)</span> Своего слугу-француза Гильо (Monsieur Guillot)</div>
+                    <div class="option-item"><span class="option-letter">Г)</span> Местного старого лекаря</div>
+                </div>
+            </div>
+
+            <!-- Вопрос 19 -->
+            <div class="question-card">
+                <div class="question-title">19. Чем закончилась дуэль между Онегиным и Ленским у ветхой мельницы?</div>
+                <div class="options-list">
+                    <div class="option-item"><span class="option-letter">А)</span> Ленский был легкого ранен в плечо</div>
+                    <div class="option-item"><span class="option-letter">Б)</span> Оба дуэлянта промахнулись</div>
+                    <div class="option-item"><span class="option-letter">В)</span> Ленский погиб от точного выстрела Онегина</div>
+                    <div class="option-item"><span class="option-letter">Г)</span> Дуэль была остановлена секундантами</div>
+                </div>
+            </div>
+
+            <!-- Вопрос 20 -->
+            <div class="question-card">
+                <div class="question-title">20. Что делает Онегин сразу после гибели Ленского и дуэли?</div>
+                <div class="options-list">
+                    <div class="option-item"><span class="option-letter">А)</span> Сразу же идет просить руки Татьяны</div>
+                    <div class="option-item"><span class="option-letter">Б)</span> Покидает деревню и отправляется в тоскливые странствия</div>
+                    <div class="option-item"><span class="option-letter">В)</span> Уходит затворником в местный монастырь</div>
+                    <div class="option-item"><span class="option-letter">Г)</span> Возвращается доживать в дом дяди</div>
+                </div>
+            </div>
+
+            <!-- Вопрос 21 -->
+            <div class="question-card">
+                <div class="question-title">21. Как сложилась судьба ветреной Ольги Лариной после смерти Ленского?</div>
+                <div class="options-list">
+                    <div class="option-item"><span class="option-letter">А)</span> Навсегда осталась девицей в трауре</div>
+                    <div class="option-item"><span class="option-letter">Б)</span> Погоревав, вскоре вышла замуж за улана и уехала</div>
+                    <div class="option-item"><span class="option-letter">В)</span> Ушла в монастырь от горя</div>
+                    <div class="option-item"><span class="option-letter">Г)</span> Уехала жить к тетке в Москву</div>
+                </div>
+            </div>
+
+            <!-- Вопрос 22 -->
+            <div class="question-card">
+                <div class="question-title">22. Куда начинает регулярно ходить Татьяна после отъезда Онегина?</div>
+                <div class="options-list">
+                    <div class="option-item"><span class="option-letter">А)</span> На кладбище к могиле Ленского</div>
+                    <div class="option-item"><span class="option-letter">Б)</span> В опустевший дом Онегина, чтобы читать его книги</div>
+                    <div class="option-item"><span class="option-letter">В)</span> К местному священнику за советом</div>
+                    <div class="option-item"><span class="option-letter">Г)</span> К местоположению дуэли у мельницы</div>
+                </div>
+            </div>
+
+            <!-- Вопрос 23 -->
+            <div class="question-card">
+                <div class="question-title">23. К какому вопросу приходит Татьяна, изучая пометки Онегина на полях книг?</div>
+                <div class="options-list">
+                    <div class="option-item"><span class="option-letter">А)</span> Что Онегин — величайший гений века</div>
+                    <div class="option-item"><span class="option-letter">Б)</span> Что Онегин глубоко верующий человек</div>
+                    <div class="option-item"><span class="option-letter">В)</span> Не является ли Онегин лишь пародией и подражанием</div>
+                    <div class="option-item"><span class="option-letter">Г)</span> Что Онегин планирует скоро вернуться</div>
+                </div>
+            </div>
+
+            <!-- Вопрос 24 -->
+            <div class="question-card">
+                <div class="question-title">24. Куда мать везет Татьяну из деревни зимой в 7-й главе?</div>
+                <div class="options-list">
+                    <div class="option-item"><span class="option-letter">А)</span> В Петербург на прием к императору</div>
+                    <div class="option-item"><span class="option-letter">Б)</span> В Москву на «ярмарку невест»</div>
+                    <div class="option-item"><span class="option-letter">В)</span> В загородный женский монастырь</div>
+                    <div class="option-item"><span class="option-letter">Г)</span> В имение к родным во Псков</div>
+                </div>
+            </div>
+
+            <!-- Вопрос 25 -->
+            <div class="question-card">
+                <div class="question-title">25. У кого останавливается семья Лариных по прибытии в Москву?</div>
+                <div class="options-list">
+                    <div class="option-item"><span class="option-letter">А)</span> В публичной гостинице</div>
+                    <div class="option-item"><span class="option-letter">Б)</span> У помещика Зарецкого</div>
+                    <div class="option-item"><span class="option-letter">В)</span> У старой больной тетки, княжны Алины</div>
+                    <div class="option-item"><span class="option-letter">Г)</span> В доме генерала N</div>
+                </div>
+            </div>
+
+            <!-- Вопрос 26 -->
+            <div class="question-card">
+                <div class="question-title">26. За кого в итоге выходит замуж Татьяна Ларина?</div>
+                <div class="options-list">
+                    <div class="option-item"><span class="option-letter">А)</span> За богатого молодого помещика-соседа</div>
+                    <div class="option-item"><span class="option-letter">Б)</span> За московского купца</div>
+                    <div class="option-item"><span class="option-letter">В)</span> За знатного и заслуженного генерала (князя N)</div>
+                    <div class="option-item"><span class="option-letter">Г)</span> За иностранного барона</div>
+                </div>
+            </div>
+
+            <!-- Вопрос 27 -->
+            <div class="question-card">
+                <div class="question-title">27. Где Онегин впервые снова встречает Татьяну спустя несколько лет странствий?</div>
+                <div class="options-list">
+                    <div class="option-item"><span class="option-letter">А)</span> В деревенской церкви</div>
+                    <div class="option-item"><span class="option-letter">Б)</span> На пышном светском балу в Петербурге</div>
+                    <div class="option-item"><span class="option-letter">В)</span> В Большом театре в Москве</div>
+                    <div class="option-item"><span class="option-letter">Г)</span> На прогулке в Летнем саду</div>
+                </div>
+            </div>
+
+            <!-- Вопрос 28 -->
+            <div class="question-card">
+                <div class="question-title">28. В каком статусе и образе перед Онегиным предстает Татьяна в Петербурге?</div>
+                <div class="options-list">
+                    <div class="option-item"><span class="option-letter">А)</span> В образе скромной провинциальной девушки</div>
+                    <div class="option-item"><span class="option-letter">Б)</span> В статусе неприступной, величественной светской дамы</div>
+                    <div class="option-item"><span class="option-letter">В)</span> В образе печальной отшельницы</div>
+                    <div class="option-item"><span class="option-letter">Г)</span> В образе скандальной петербургской кокетки</div>
+                </div>
+            </div>
+
+            <!-- Вопрос 29 -->
+            <div class="question-card">
+                <div class="question-title">29. Что чувствует Онегин, когда видит преображенную Татьяну в Петербурге?</div>
+                <div class="options-list">
+                    <div class="option-item"><span class="option-letter">А)</span> Остается совершенно равнодушен</div>
+                    <div class="option-item"><span class="option-letter">Б)</span> Начинает насмехаться над её титулом</div>
+                    <div class="option-item"><span class="option-letter">В)</span> Страстно и безответно влюбляется в неё</div>
+                    <div class="option-item"><span class="option-letter">Г)</span> Испытывает к ней презрение за выбор мужа</div>
+                </div>
+            </div>
+
+            <!-- Вопрос 30 -->
+            <div class="question-card">
+                <div class="question-title">30. Как пытается Онегин добиться внимания Татьяны, когда она его игнорирует?</div>
+                <div class="options-list">
+                    <div class="option-item"><span class="option-letter">А)</span> Вызывает её мужа на дуэль</div>
+                    <div class="option-item"><span class="option-letter">Б)</span> Пишет ей одно за другим пылкие письма</div>
+                    <div class="option-item"><span class="option-letter">В)</span> Навсегда уезжает из России</div>
+                    <div class="option-item"><span class="option-letter">Г)</span> Пытается похитить её с бала</div>
+                </div>
+            </div>
+
+            <!-- Вопрос 31 -->
+            <div class="question-card">
+                <div class="question-title">31. В каком виде Онегин застает Татьяну, неожиданно приехав к ней без доклада?</div>
+                <div class="options-list">
+                    <div class="option-item"><span class="option-letter">А)</span> Она сжигает его письмовники в камине</div>
+                    <div class="option-item"><span class="option-letter">Б)</span> Она танцует с мужем в гостиной</div>
+                    <div class="option-item"><span class="option-letter">В)</span> Она сидит одна и тихо плачет над его письмом</div>
+                    <div class="option-item"><span class="option-letter">Г)</span> Она весело смеется над ним с подругами</div>
+                </div>
+            </div>
+
+            <!-- Вопрос 32 -->
+            <div class="question-card">
+                <div class="question-title">32. Что отвечает Татьяна на пылкие признания Онегина в последнем разговоре?</div>
+                <div class="options-list">
+                    <div class="option-item"><span class="option-letter">А)</span> Прогоняет его без единого слова</div>
+                    <div class="option-item"><span class="option-letter">Б)</span> Соглашается бросить мужа и бежать с ним</div>
+                    <div class="option-item"><span class="option-letter">В)</span> Признается в любви, но говорит, что останется верна мужу</div>
+                    <div class="option-item"><span class="option-letter">Г)</span> Обещает подумать над его предложением</div>
+                </div>
+            </div>
+
+            <!-- Вопрос 33 -->
+            <div class="question-card">
+                <div class="question-title">33. Чем внезапно прерывается тяжелое объяснение Татьяны и Онегина в финале?</div>
+                <div class="options-list">
+                    <div class="option-item"><span class="option-letter">А)</span> Громким выстрелом на улице</div>
+                    <div class="option-item"><span class="option-letter">Б)</span> Звоном шпор и появлением мужа Татьяны</div>
+                    <div class="option-item"><span class="option-letter">В)</span> Внезапным приходом слуги с известием</div>
+                    <div class="option-item"><span class="option-letter">Г)</span> Началом пожара в Петербурге</div>
+                </div>
+            </div>
+
+            <!-- Вопрос 34 -->
+            <div class="question-card">
+                <div class="question-title">34. Как зовут старую няню Татьяны, с которой она говорит о любви перед письмом?</div>
+                <div class="options-list">
+                    <div class="option-item"><span class="option-letter">А)</span> Арина Родионовна</div>
+                    <div class="option-item"><span class="option-letter">Б)</span> Филиппьевна</div>
+                    <div class="option-item"><span class="option-letter">В)</span> Василиса</div>
+                    <div class="option-item"><span class="option-letter">Г)</span> Марфа</div>
+                </div>
+            </div>
+
+            <!-- Вопрос 35 -->
+            <div class="question-card">
+                <div class="question-title">35. Каково звание и общественный статус мужа Татьяны Лариной?</div>
+                <div class="options-list">
+                    <div class="option-item"><span class="option-letter">А)</span> Богатый купец первой гильдии</div>
+                    <div class="option-item"><span class="option-letter">Б)</span> Важный и боевой генерал (князь)</div>
+                    <div class="option-item"><span class="option-letter">В)</span> Мелкий чиновник 14-го класса</div>
+                    <div class="option-item"><span class="option-letter">Г)</span> Иностранный дипломат</div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Ключи к тесту -->
+        <div class="answers-section">
+            <div class="answers-title">Правильные ответы</div>
+            <div class="answers-grid">
+                <div class="answer-box">1 — <span>Б</span></div>
+                <div class="answer-box">2 — <span>В</span></div>
+                <div class="answer-box">3 — <span>Б</span></div>
+                <div class="answer-box">4 — <span>В</span></div>
+                <div class="answer-box">5 — <span>Б</span></div>
+                <div class="answer-box">6 — <span>В</span></div>
+                <div class="answer-box">7 — <span>Б</span></div>
+                <div class="answer-box">8 — <span>В</span></div>
+                <div class="answer-box">9 — <span>Б</span></div>
+                <div class="answer-box">10 — <span>В</span></div>
+                <div class="answer-box">11 — <span>Б</span></div>
+                <div class="answer-box">12 — <span>В</span></div>
+                <div class="answer-box">13 — <span>Б</span></div>
+                <div class="answer-box">14 — <span>В</span></div>
+                <div class="answer-box">15 — <span>А</span></div>
+                <div class="answer-box">16 — <span>В</span></div>
+                <div class="answer-box">17 — <span>Б</span></div>
+                <div class="answer-box">18 — <span>В</span></div>
+                <div class="answer-box">19 — <span>В</span></div>
+                <div class="answer-box">20 — <span>Б</span></div>
+                <div class="answer-box">21 — <span>Б</span></div>
+                <div class="answer-box">22 — <span>Б</span></div>
+                <div class="answer-box">23 — <span>В</span></div>
+                <div class="answer-box">24 — <span>Б</span></div>
+                <div class="answer-box">25 — <span>В</span></div>
+                <div class="answer-box">26 — <span>В</span></div>
+                <div class="answer-box">27 — <span>Б</span></div>
+                <div class="answer-box">28 — <span>Б</span></div>
+                <div class="answer-box">29 — <span>В</span></div>
+                <div class="answer-box">30 — <span>Б</span></div>
+                <div class="answer-box">31 — <span>В</span></div>
+                <div class="answer-box">32 — <span>В</span></div>
+                <div class="answer-box">33 — <span>Б</span></div>
+                <div class="answer-box">34 — <span>Б</span></div>
+                <div class="answer-box">35 — <span>Б</span></div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
+```eof
